@@ -1,0 +1,35 @@
+<h1>Add Item</h1>
+
+<form action="<?php echo $block->getFormAction() ?>" method="post" data-hasrequired="* Required Fields" data-mage-init='{"validation":{}}' enctype='multipart/form-data'>
+
+    <fieldset class="fieldset">
+		<div class="field name required">
+			<label class="label" for="name"><span>Name</span></label>
+			<div class="control">
+                <input name="name" id="name" title="Name" value="" class="input-text required" type="text" />
+			</div>
+		</div>
+	    <div class="field name">
+			<label class="label" for="description"><span>Description</span></label>
+			<div class="control">
+                <input name="description" id="description" title="Description" value="" class="input-text" type="text" />
+			</div>
+		</div>
+		<div class="field image">
+            <label class="label" for="image"><span>Image</span></label>
+            <div class="control">
+                <input name="image" id="image" title="Image" value="" class="input-file" type="file">
+            </div>
+        </div>
+        	
+	</fieldset>
+<div class="actions-toolbar">
+	        <div class="primary">
+            		<input type="hidden" name="hideit" id="hideit" value="" />
+            		<button type="submit" title="Submit" class="action submit primary">
+                		<span>Submit</span>
+            		</button>
+        	</div>
+    	</div>
+    
+</form>

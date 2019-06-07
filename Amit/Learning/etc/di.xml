@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="learning_items_grid_data_source" xsi:type="string">Amit\Learning\Model\ResourceModel\Item\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+   
+
+    <virtualType name="CustomLogger" type="Magento\Framework\Logger\Monolog">
+      <arguments>
+      		<argument name="name" xsi:type="string">main</argument>
+          	<argument name="handlers"  xsi:type="array">
+          		<item name="system" xsi:type="object">Magento\Framework\Logger\Handler\System</item>
+            	<item name="debug" xsi:type="object">Amit\Learning\Handler\Custom</item>
+          </argument>
+      </arguments>
+  </virtualType>
+  <type name="Amit\Learning\Observer\Logger">
+  	 <arguments>
+        <argument name="logger" xsi:type="object">CustomLogger</argument>
+     </arguments>
+  </type>
+   <type name="Amit\Learning\Controller\Index\Index">
+        <plugin name="console_logging" type="Amit\Learning\Plugin\Logger"/>
+    </type>
+
+    <virtualType name="Amit\Learning\HelloWorldImageUpload" type="Amit\Learning\Model\ImageUploader">
+    <arguments>
+            <argument name="baseTmpPath" xsi:type="string">test/tmp</argument>
+            <argument name="basePath" xsi:type="string">test</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+    </arguments>
+</virtualType>
+<type name="Amit\Learning\Controller\Adminhtml\Index\Upload">
+    <arguments>
+            <argument name="imageUploader" xsi:type="object">Amit\Learning\HelloWorldImageUpload</argument>
+    </arguments>
+</type>
+</config>
